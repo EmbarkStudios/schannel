@@ -457,7 +457,7 @@ pub struct CRYPT_PRIVATE_KEY_INFO {
     pub pAttributes: *mut CRYPT_ATTRIBUTES,
 }
 
-#[link(name = "windows")] // crypt32
+#[link(name = "crypt32", kind = "raw-dylib")]
 extern "system" {
     pub fn CertDuplicateCertificateChain(
         pChainContext: *const CERT_CHAIN_CONTEXT,
@@ -634,7 +634,7 @@ extern "system" {
     ) -> *mut CERT_CONTEXT;
 }
 
-#[link(name = "windows")] // advapi32
+#[link(name = "advapi32", kind = "raw-dylib")]
 extern "system" {
     pub fn CryptReleaseContext(hProv: usize, dwFlags: u32) -> BOOL;
     pub fn CryptImportKey(

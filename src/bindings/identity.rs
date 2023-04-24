@@ -148,7 +148,7 @@ pub type SEC_GET_KEY_FN = Option<
     ),
 >;
 
-#[link(name = "windows")] // secur32
+#[link(name = "secur32", kind = "raw-dylib")]
 extern "system" {
     pub fn AcquireCredentialsHandleA(
         pszPrincipal: *const u8,
